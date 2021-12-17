@@ -27,8 +27,8 @@ include "veritabani.php";
                 echo "<td>{$satir['isbn']}</td>";
                 echo "<td>";
                 echo "<a href='kitapsil.php?id={$satir['id']}'>SİL</a>";
-                echo "|"
-                echo "<a href='kitapduzenle.php?id={$satir['id']}'>SİL</a>";
+                echo "|";
+                echo "<a href='kitapduzenle.php?id={$satir['id']}'>DÜZENLE</a>";
                 echo "</td>";
                 echo "</tr>";
             }

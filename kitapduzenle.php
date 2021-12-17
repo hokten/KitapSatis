@@ -10,16 +10,17 @@ include "veritabani.php";
         $sql = "SELECT * FROM `kitaplar` WHERE `id` = :id";
         $sorgu = $baglanti->prepare($sql);
         $sorgu->bindParam(':id', $_GET["id"], PDO::PARAM_INT);
-        
-
+        $sorgu->execute();
+        $kayit = $sorgu->fetch();
     ?>
-    <form action="kitapekle.php" method="post">
-        Kitap Adı : <input type="text" name="kadi" /><br />
-        Yazarı  : <input type="text" name="yzr" /><br />
-        Kategorisi : <input type="text" name="ktg" /><br />
-        Fiyatı : <input type="text" name="fiy" /><br />
-        ISBN : <input type="text" name="isbn" /><br />
-        <input type="submit" value="EKLE" />
+    <form action="kitapduzenle.php" method="post">
+        Kitap Adı : <input type="text" name="kadi" value="<?= $kayit["kitapadi"] ?>" /><br />
+        Yazarı  : <input type="text" name="yzr" value="<?= $kayit["yazar"] ?>"/><br />
+        Kategorisi : <input type="text" name="ktg" value="<?= $kayit["kategori"] ?>" /><br />
+        Fiyatı : <input type="text" name="fiy" value="<?= $kayit["fiyat"] ?>" /><br />
+        ISBN : <input type="text" name="isbn" value="<?= $kayit["isbn"] ?>" /><br />
+        <input type="hidden" name="id" value="<?= $kayit["id"] ?>" /><br />
+        <input type="submit" value="DÜZENLE" />
     </form>
     <?php
     else:
@@ -31,11 +32,18 @@ include "veritabani.php";
         `isbn` = :isbn 
          WHERE `id` = :id";
          $sorgu = $baglanti->prepare($sql);
+         $sorgu->bindParam(':id', $_POST["id"], PDO::PARAM_STR);
          $sorgu->bindParam(':isbn', $_POST["isbn"], PDO::PARAM_STR);
-         $sorgu->bindParam(':kadi', $_POST["kadi"], PDO::PARAM_STR);
-         $sorgu->bindParam(':yzr', $_POST["yzr"], PDO::PARAM_STR);
-         $sorgu->bindParam(':ktg', $_POST["ktg"], PDO::PARAM_STR);
-         $sorgu->bindParam(':fiy', $_POST["fiy"], PDO::PARAM_INT);        var_dump($sorgu->execute());
+         $sorgu->bindParam(':ka', $_POST["kadi"], PDO::PARAM_STR);
+         $sorgu->bindParam(':yz', $_POST["yzr"], PDO::PARAM_STR);
+         $sorgu->bindParam(':kt', $_POST["ktg"], PDO::PARAM_STR);
+         $sorgu->bindParam(':fy', $_POST["fiy"], PDO::PARAM_INT);       
+        if($sorgu->execute()) {
+            echo "Kayıt Düzenlendi. <a href='kitaplistele.php'>Listelemeye geri dön</a>";
+        }
+        else {
+            echo "Hata var.";
+        }
     endif
     ?>
 </html>
