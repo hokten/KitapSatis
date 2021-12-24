@@ -36,7 +36,7 @@ include "veritabani.php";
         $sorgu = $baglanti->prepare($sql);
         $sorgu->bindParam(':isbn', $_POST["isbn"], PDO::PARAM_STR);
         $sorgu->bindParam(':kadi', $_POST["kadi"], PDO::PARAM_STR);
-        $sorgu->bindParam(':yzr', $_POST["yzr"], PDO::PARAM_STR);
+        $sorgu->bindParam(':yzr', $_POST["yzr"], PDO::PARAM_INT);
         $sorgu->bindParam(':ktg', $_POST["ktg"], PDO::PARAM_STR);
         $sorgu->bindParam(':fiy', $_POST["fiy"], PDO::PARAM_INT);
         var_dump($sorgu->execute());
