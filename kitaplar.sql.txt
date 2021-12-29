@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3308
--- Üretim Zamanı: 24 Ara 2021, 05:44:40
+-- Üretim Zamanı: 29 Ara 2021, 13:30:09
 -- Sunucu sürümü: 5.7.28
 -- PHP Sürümü: 7.3.12
 
@@ -25,49 +25,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `kitaplar`
+-- Tablo için tablo yapısı `kitap_kategori`
 --
 
-DROP TABLE IF EXISTS `kitaplar`;
-CREATE TABLE IF NOT EXISTS `kitaplar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `isbn` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
-  `kitapadi` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
-  `yazar` int(11) NOT NULL,
-  `kategori` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
-  `fiyat` decimal(10,0) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
-
---
--- Tablo döküm verisi `kitaplar`
---
-
-INSERT INTO `kitaplar` (`id`, `isbn`, `kitapadi`, `yazar`, `kategori`, `fiyat`) VALUES
-(6, '45RTR', 'Ateş', 1, 'roman', '45'),
-(7, '454JHGH', 'Su', 2, 'hikaye', '67');
-
--- --------------------------------------------------------
-
---
--- Tablo için tablo yapısı `yazarlar`
---
-
-DROP TABLE IF EXISTS `yazarlar`;
-CREATE TABLE IF NOT EXISTS `yazarlar` (
-  `yazar_id` int(11) NOT NULL AUTO_INCREMENT,
-  `yazar_ad_soyad` varchar(200) COLLATE utf8_turkish_ci NOT NULL,
-  `yazar_aciklama` text COLLATE utf8_turkish_ci NOT NULL,
-  PRIMARY KEY (`yazar_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
-
---
--- Tablo döküm verisi `yazarlar`
---
-
-INSERT INTO `yazarlar` (`yazar_id`, `yazar_ad_soyad`, `yazar_aciklama`) VALUES
-(1, 'Orhan PAMUK', 'İyi yazar'),
-(2, 'Ali VELİ', 'Süper Yazar');
+DROP TABLE IF EXISTS `kitap_kategori`;
+CREATE TABLE IF NOT EXISTS `kitap_kategori` (
+  `kitap_kategori_id` int(11) NOT NULL AUTO_INCREMENT,
+  `kitap_id` int(11) NOT NULL,
+  `kategori_id` int(11) NOT NULL,
+  PRIMARY KEY (`kitap_kategori_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
