@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3308
--- Üretim Zamanı: 29 Ara 2021, 13:30:09
+-- Üretim Zamanı: 29 Ara 2021, 13:32:00
 -- Sunucu sürümü: 5.7.28
 -- PHP Sürümü: 7.3.12
 
@@ -25,6 +25,55 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `kategoriler`
+--
+
+DROP TABLE IF EXISTS `kategoriler`;
+CREATE TABLE IF NOT EXISTS `kategoriler` (
+  `kategori_id` int(11) NOT NULL AUTO_INCREMENT,
+  `kategori_adi` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
+  PRIMARY KEY (`kategori_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `kategoriler`
+--
+
+INSERT INTO `kategoriler` (`kategori_id`, `kategori_adi`) VALUES
+(1, 'Roman'),
+(2, 'Hikaye'),
+(3, 'Tarih');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `kitaplar`
+--
+
+DROP TABLE IF EXISTS `kitaplar`;
+CREATE TABLE IF NOT EXISTS `kitaplar` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `isbn` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
+  `kitapadi` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
+  `yazar` int(11) NOT NULL,
+  `fiyat` decimal(10,0) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `kitaplar`
+--
+
+INSERT INTO `kitaplar` (`id`, `isbn`, `kitapadi`, `yazar`, `fiyat`) VALUES
+(6, '45RTR', 'Ateş', 1, '45'),
+(7, '454JHGH', 'Su', 2, '67'),
+(8, '545FGF', 'Deniz', 3, '45'),
+(9, '545FGF', 'Kum', 2, '45'),
+(10, '545FGF', 'Ağaç', 2, '45');
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `kitap_kategori`
 --
 
@@ -35,6 +84,29 @@ CREATE TABLE IF NOT EXISTS `kitap_kategori` (
   `kategori_id` int(11) NOT NULL,
   PRIMARY KEY (`kitap_kategori_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `yazarlar`
+--
+
+DROP TABLE IF EXISTS `yazarlar`;
+CREATE TABLE IF NOT EXISTS `yazarlar` (
+  `yazar_id` int(11) NOT NULL AUTO_INCREMENT,
+  `yazar_ad_soyad` varchar(200) COLLATE utf8_turkish_ci NOT NULL,
+  `yazar_aciklama` text COLLATE utf8_turkish_ci NOT NULL,
+  PRIMARY KEY (`yazar_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `yazarlar`
+--
+
+INSERT INTO `yazarlar` (`yazar_id`, `yazar_ad_soyad`, `yazar_aciklama`) VALUES
+(1, 'Orhan PAMUK', 'İyi yazar'),
+(2, 'Ali VELİ', 'Süper Yazar'),
+(3, 'Ahmet ŞANLI', 'Twerwe wer');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
