@@ -7,3 +7,6 @@
         <a href="kitaplistele.php">Kitap Listele</a>
     </body>
 </html>
+
+
+<!-- https://bootsnipp.com/snippets/exqd3 -->
