@@ -4,8 +4,15 @@ include "veritabani.php";
 <html>
     <head>
         <title>Kitap Listele</title>
+        
     </head>
     <body>
+
+
+
+
+
+
         <table border="1">
             <tr>
                 <th>Kitap Adı</th>
@@ -32,5 +39,7 @@ include "veritabani.php";
             }
             ?>
             </table>
+
+ 
     </body>
 </html>
