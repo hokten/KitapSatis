@@ -10,7 +10,6 @@ include "veritabani.php";
             <tr>
                 <th>Kitap Adı</th>
                 <th>Yazar</th>
-                <th>Kategori</th>
                 <th>Fiyat</th>
                 <th>ISBN</th>
                 <th>Olaylar</th>
@@ -22,7 +21,6 @@ include "veritabani.php";
                 echo "<tr>";
                 echo "<td>{$satir['kitapadi']}</td>";
                 echo "<td>{$satir['yazar']}</td>";
-                echo "<td>{$satir['kategori']}</td>";
                 echo "<td>{$satir['fiyat']}</td>";
                 echo "<td>{$satir['isbn']}</td>";
                 echo "<td>";

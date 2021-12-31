@@ -16,7 +16,7 @@ include "veritabani.php";
     <form action="kitapduzenle.php" method="post">
         Kitap Adı : <input type="text" name="kadi" value="<?= $kayit["kitapadi"] ?>" /><br />
         Yazarı  : <input type="text" name="yzr" value="<?= $kayit["yazar"] ?>"/><br />
-        Kategorisi : <input type="text" name="ktg" value="<?= $kayit["kategori"] ?>" /><br />
+
         Fiyatı : <input type="text" name="fiy" value="<?= $kayit["fiyat"] ?>" /><br />
         ISBN : <input type="text" name="isbn" value="<?= $kayit["isbn"] ?>" /><br />
         <input type="hidden" name="id" value="<?= $kayit["id"] ?>" /><br />
@@ -28,13 +28,11 @@ include "veritabani.php";
         `kitapadi` = :ka, 
         `yazar` = :yz, 
         `fiyat` = :fy,
-        `kategori` = :kt, 
         `isbn` = :isbn 
          WHERE `id` = :id";
          $sorgu = $baglanti->prepare($sql);
          $sorgu->bindParam(':id', $_POST["id"], PDO::PARAM_STR);
          $sorgu->bindParam(':isbn', $_POST["isbn"], PDO::PARAM_STR);
-         $sorgu->bindParam(':ka', $_POST["kadi"], PDO::PARAM_STR);
          $sorgu->bindParam(':yz', $_POST["yzr"], PDO::PARAM_STR);
          $sorgu->bindParam(':kt', $_POST["ktg"], PDO::PARAM_STR);
          $sorgu->bindParam(':fy', $_POST["fiy"], PDO::PARAM_INT);       
