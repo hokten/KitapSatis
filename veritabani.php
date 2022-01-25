@@ -5,11 +5,11 @@ $host="localhost:3308";
 $veritabani="ekitap";
 
 try {
-	$baglanti = new PDO("mysql:host=$host;dbname=$veritabani", $kullanici_ismi, $sifre);
+	$baglanti = new ???("mysql:host=$host;dbname=$veritabani", $kullanici_ismi, $sifre);
 	$baglanti->exec("SET NAMES 'utf8'; SET CHARSET 'utf8'");
-	$baglanti->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$baglanti->setAttribute(???::ATTR_ERRMODE, ???::ERRMODE_EXCEPTION);
 
 }
-catch(PDOException $e) {
+catch(???Exception $e) {
 	echo $e->getMessage();
 }
